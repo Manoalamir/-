@@ -1,3 +1,19 @@
+# لعبة سباق السيارات
+
+لعبة سباق سيارات مبنية باستخدام HTML, CSS, و JavaScript.
+
+## المتطلبات
+
+- متصفح حديث يدعم HTML5
+
+## التثبيت
+
+```bash
+# استنساخ المستودع
+git clone https://github.com/username/car-racing-game.git
+cd car-racing-game
+
+# لا يوجد تثبيت مطلوب. فقط افتح index.html في المتصفح.
 
 ### كيفية إنشاء ملف README
 
@@ -18,3 +34,5 @@ git commit -m "إضافة ملف README"
 
 # دفع التغييرات إلى GitHub
 git push
+
+
