@@ -26,19 +26,39 @@ document.addEventListener('DOMContentLoaded', () => {
     startBtn.addEventListener('click', startGame);
     restartBtn.addEventListener('click', restartGame);
 
+    // تحكم لوحة المفاتيح
     document.addEventListener('keydown', (event) => {
         if (!isGameActive) return;
 
         switch (event.key) {
             case 'ArrowLeft':
-                if (carPosition > 0) carPosition -= 10; // Increase movement speed
+                if (carPosition > 0) carPosition -= 10; // زيادة سرعة الحركة
                 break;
             case 'ArrowRight':
-                if (carPosition < 350) carPosition += 10; // Increase movement speed
+                if (carPosition < 350) carPosition += 10; // زيادة سرعة الحركة
                 break;
         }
         car.style.left = carPosition + 'px';
     });
+
+    // تحكم الشاشة باللمس
+    gameContainer.addEventListener('touchstart', handleTouch);
+    gameContainer.addEventListener('touchmove', handleTouch);
+
+    function handleTouch(event) {
+        if (!isGameActive) return;
+
+        const touchX = event.touches[0].clientX;
+        const gameContainerRect = gameContainer.getBoundingClientRect();
+        const relativeX = touchX - gameContainerRect.left;
+
+        if (relativeX < carPosition) {
+            if (carPosition > 0) carPosition -= 10; // زيادة سرعة الحركة
+        } else if (relativeX > carPosition) {
+            if (carPosition < 350) carPosition += 10; // زيادة سرعة الحركة
+        }
+        car.style.left = carPosition + 'px';
+    }
 
     function startGame() {
         isGameActive = true;
